@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     SkinnedMeshRenderer rend;
     public Material matInvisible;
     public Material matNormal;
+    public Transform itemDropLocation;
 
     // Start is called before the first frame update
     void Start()
@@ -49,13 +50,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            GetComponent<BoxCollider>().isTrigger = true;
+            //GetComponent<BoxCollider>().isTrigger = true;
             rend.material = matInvisible;
         }
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            GetComponent<BoxCollider>().isTrigger = false;
+            //GetComponent<BoxCollider>().isTrigger = false;
             rend.material = matNormal;
         }
     }

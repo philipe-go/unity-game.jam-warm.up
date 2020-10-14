@@ -14,14 +14,14 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = 6;
+        moveSpeed = 9;
         transform.position = target.position;
         transform.LookAt(player.transform);
     }
 
 
     //Changed the transform.position to update with Lerp to make the movement of the camera smoother 
-    void LateUpdate()
+    void FixedUpdate()
     {
         transform.LookAt(player.transform);
         transform.position = Vector3.Lerp(transform.position, target.position, moveSpeed * Time.deltaTime);
