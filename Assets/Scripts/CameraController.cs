@@ -6,25 +6,28 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;
+    public Transform player;
     public Transform target;
-    [SerializeField] Vector3 offset;
-    [Range(1,11)][SerializeField] int moveSpeed;
-    
+    float mouseX, mouseY;
+    float mouseYClamp = 85f;
+    float rotationSpeed = 1;
 
-    void Start()
-    {
-        moveSpeed = 6;
-        transform.position = target.position;
-        transform.LookAt(player.transform);
+    // Added this bit of code to hide cursor from showing in the game
+    void Start() {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-
     //Changed the transform.position to update with Lerp to make the movement of the camera smoother 
-    void LateUpdate()
-    {
-        transform.LookAt(player.transform);
-        transform.position = Vector3.Lerp(transform.position, target.position, moveSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0, player.transform.eulerAngles.y, 0);
+    void LateUpdate() {
+        CameraControl();
+    }
+
+    void CameraControl() {
+        mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
+        mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
+        mouseY = Mathf.Clamp(mouseY, -mouseYClamp, mouseYClamp);
+        target.rotation = Quaternion.Euler(mouseY, mouseX, 0f);
+        transform.LookAt(player);
     }
 }
