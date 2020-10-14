@@ -7,14 +7,22 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     float horMovement;
     float verMovement;
-    Vector3 direction;
     public float speed = 13f;
     public float rotateSpeed = 30f;
+    SkinnedMeshRenderer rend;
+    public Material matInvisible;
+    public Material matNormal;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+    }
+
+    private void Update()
+    {
+        InvisiblePower();
     }
 
     // Update is called once per frame
@@ -25,17 +33,30 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        
         horMovement = Input.GetAxis("Horizontal");
-        Debug.Log(horMovement);
         verMovement = Input.GetAxis("Vertical");
-        direction = new Vector3(horMovement, 0, verMovement);
-        if (direction!=Vector3.zero)
+
+        //if (direction != Vector3.zero)
+        //{
+        //    //rb.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotateSpeed * Time.fixedDeltaTime);
+        //}
+
+        rb.rotation = transform.rotation * Quaternion.Euler(Vector3.up * rotateSpeed * horMovement * Time.deltaTime);
+        rb.position += transform.forward * verMovement * speed * Time.deltaTime;
+    }
+
+    void InvisiblePower()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotateSpeed * Time.fixedDeltaTime);
+            GetComponent<BoxCollider>().isTrigger = true;
+            rend.material = matInvisible;
         }
-        
-        rb.MovePosition(transform.position + (speed *Time.deltaTime*direction));
-        
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            GetComponent<BoxCollider>().isTrigger = false;
+            rend.material = matNormal;
+        }
     }
 }
