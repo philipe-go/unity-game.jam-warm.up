@@ -33,6 +33,7 @@ public class PickUp : MonoBehaviour
                     }
                 }
             }
+            
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -79,6 +80,9 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
+        isFull[slotNumber] = false;
+        slotPlaces[slotNumber].GetComponent<Image>().sprite = null;
+        scareID[slotNumber] = 0;
     }
     
     public void SetTrap(GameObject trap)
@@ -87,7 +91,8 @@ public class Inventory : MonoBehaviour
         Vector3 trapPos = itemPlacementLocation.position;
         GameObject item = Instantiate(trap, trapPos, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = true;
-        GameObject.Destroy(gameObject);
+
+        //GameObject.Destroy(gameObject);
     }
     
     /*
