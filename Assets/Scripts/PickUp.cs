@@ -10,7 +10,11 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        if (inventory == null)
+        {
+            inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+
+        }
     }
 
     // Update is called once per frame
