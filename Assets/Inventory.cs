@@ -8,10 +8,16 @@ public class Inventory : MonoBehaviour
 
     public bool[] isFull;
     public GameObject[] slotPlaces;
+    public int[] scareID; //Every scare move will have an ID to keep a track of which scare is present in which slot.
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        scareID = new int[slotPlaces.Length];
+        //player = GameObject.FindGameObjectWithTag("Player");
         //gameObject.SetActive(false);
     }
 
