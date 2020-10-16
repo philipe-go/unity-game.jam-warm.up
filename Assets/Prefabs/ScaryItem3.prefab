@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2420437707611796616}
   - component: {fileID: 2420437707611796617}
   - component: {fileID: 2420437707611796618}
+  - component: {fileID: -4228651846935541532}
   m_Layer: 0
   m_Name: ScaryItem3
   m_TagString: Trap
@@ -112,3 +113,19 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 39b32cb997de33640879919ced3e21d8, type: 3}
   isTrapActive: 0
   scareID: 3
+--- !u!54 &-4228651846935541532
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420437707611796619}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
