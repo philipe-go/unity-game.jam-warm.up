@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         transform.position += transform.forward * verMovement * speed * Time.deltaTime;
     }
 
-<<<<<<< HEAD
     void InvisiblePower() {
         if (Input.GetKeyDown(KeyCode.F)) {
             GetComponentInChildren<BoxCollider>().isTrigger = true;
@@ -46,19 +45,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F)) {
             GetComponentInChildren<BoxCollider>().isTrigger = false;
-=======
-    void InvisiblePower()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            //GetComponent<BoxCollider>().isTrigger = true;
-            rend.material = matInvisible;
-        }
-
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            //GetComponent<BoxCollider>().isTrigger = false;
->>>>>>> origin/Inventory
             rend.material = matNormal;
         }
     }
