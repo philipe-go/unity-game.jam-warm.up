@@ -18,15 +18,17 @@ public class ScaresManager : MonoBehaviour
 
     public void SpawnDroppedItem()
     {
-        Transform trapPos = playerController.itemDropLocation;
-        GameObject item =Instantiate(inactiveItemTrap, trapPos.position, Quaternion.identity);
+        //Transform trapPos = playerController.itemDropLocation;
+        Transform trapPos = player.transform;
+        GameObject item = Instantiate(inactiveItemTrap, trapPos.position, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = false;
         //Instantiate(inactiveItemTrap, player.transform.position, Quaternion.identity);
     }
 
     public void SetTrap()
     {
-        Transform trapPos = playerController.itemDropLocation;
+        //Transform trapPos = playerController.itemDropLocation;
+        Transform trapPos = player.transform;
         GameObject item = Instantiate(activeItemTrap, trapPos.position, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = true;
         GameObject.Destroy(gameObject);
@@ -34,6 +36,6 @@ public class ScaresManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

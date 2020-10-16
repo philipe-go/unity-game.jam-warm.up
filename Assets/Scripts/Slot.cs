@@ -9,7 +9,7 @@ public class Slot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour
 
     public void DropItem()
     {
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             child.GetComponent<ScaresManager>().SpawnDroppedItem();
             GameObject.Destroy(child.gameObject);
