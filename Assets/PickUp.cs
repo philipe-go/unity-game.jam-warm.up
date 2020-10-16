@@ -1,23 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
     public Inventory inventory;
-    public GameObject itemButton;
+    public Sprite itemIcon;
     public bool isTrapActive = false;
-    // Start is called before the first frame update
+    public int scareID;  //Every scare move will have an ID to keep a track of which scare is present in which slot.
+    
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -26,16 +23,17 @@ public class PickUp : MonoBehaviour
             {
                 for (int i = 0; i < inventory.slotPlaces.Length; i++)
                 {
-                    if (inventory.isFull[i] == false)
+                    if (inventory.isFull[i] == false)  //Item can be added to the inventory
                     {
                         inventory.isFull[i] = true;
-                        Instantiate(itemButton, inventory.slotPlaces[i].transform, false);
+                        inventory.slotPlaces[i].GetComponent<Image>().sprite = itemIcon;
+                        inventory.scareID[i] = scareID;
                         Destroy(gameObject);
                         break;
-                        //Item can be added to the inventory
                     }
                 }
             }
+            
         }
     }
 }
