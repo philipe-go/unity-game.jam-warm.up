@@ -1,23 +1,14 @@
 fileFormatVersion: 2
-guid: a73fe83f55cc8de4d9fff703886d6ab3
+guid: 9b0dd0bdca48f914a83055dc6d7cc2a2
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: 7176209919637214875
-    second: Action
+      74: 2876981554226286365
+    second: Armature|IDLE
   - first:
-      74: 885944232402757753
-    second: Armature|Action
-  - first:
-      74: -2268178483216457951
-    second: Armature|FLOAT
-  - first:
-      74: -3914333769757159082
-    second: Armature|FLOAT.001
-  - first:
-      74: 4083308290379738747
-    second: Armature|FLOAT.002
+      74: 4540250025106317447
+    second: Armature|WALK
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -47,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Action
-      takeName: Action
+      name: Armature|IDLE
+      takeName: Armature|IDLE
       internalID: 0
       firstFrame: 0
-      lastFrame: 13
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -76,40 +67,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Action
-      takeName: Armature|Action
+      name: Armature|WALK
+      takeName: Armature|WALK
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|FLOAT
-      takeName: Armature|FLOAT
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 19
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,64 +80,6 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|FLOAT.001
-      takeName: Armature|FLOAT.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 19
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|FLOAT.002
-      takeName: Armature|FLOAT.002
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 19
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
