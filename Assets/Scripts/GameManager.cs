@@ -12,6 +12,7 @@ sealed class GameManager : MonoBehaviour
     [Space]
     [SerializeField] GameObject _gameOver;
 
+
     #region Singleton
     public static GameManager instance = null;
     GameManager() {}
