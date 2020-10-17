@@ -7,33 +7,29 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject _startMenu;
     [SerializeField] Transform cameraPlaceHolder;
-    [Range(2f, 1000)] public float RotSpeed = 4f; 
-    AsyncOperation loadScene;
+    [Range(2f, 20)] public float RotSpeed = 4f;
 
-    void Start() 
+    void Start()
     {
-        loadScene = new AsyncOperation();
-        loadScene = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        loadScene.allowSceneActivation = false;
         _startMenu.SetActive(true);
-    }    
+    }
 
     void Update()
     {
-        cameraPlaceHolder.transform.Rotate(new Vector3(0,1,0), RotSpeed*Time.deltaTime);
+        cameraPlaceHolder.transform.Rotate(new Vector3(0, 1, 0), RotSpeed * Time.deltaTime);
         Camera.main.transform.LookAt(cameraPlaceHolder);
     }
 
     public void Play()
     {
-        loadScene.allowSceneActivation = true;
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void Quit()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif 
+#endif
         Application.Quit();
     }
 }
