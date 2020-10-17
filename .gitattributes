@@ -1,0 +1,5 @@
+* linguist-language=C#
+*.shader linguist-detectable=false
+*.rtf linguist-detectable=false
+*.pdf linguist-detectable=false
+*.txt linguist-detectable=false
