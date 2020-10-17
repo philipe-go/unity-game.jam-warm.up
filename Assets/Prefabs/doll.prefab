@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 7552024386750228716}
   - component: {fileID: 8017699640169238967}
   - component: {fileID: 8017699640169238965}
+  - component: {fileID: 7409504027324772298}
   - component: {fileID: 5574112052817130051}
   m_Layer: 0
   m_Name: doll
@@ -310,6 +311,24 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: dab70c0fe8a2f334882bd2d9442b57f6, type: 3}
   isTrapActive: 0
   scareID: 1
+--- !u!114 &7409504027324772298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171417834242044502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.9150943, g: 0.12517802, b: 0.12517802, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!54 &5574112052817130051
 Rigidbody:
   m_ObjectHideFlags: 0

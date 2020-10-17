@@ -38,6 +38,8 @@ public class ItemDetectionLocation : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 trapsInRange[nearestTrapIndex].GetComponent<PickUp>().isTrapActive = false;
+                //Inserted to handle the outline when the trap is no active
+                trapsInRange[nearestTrapIndex].GetComponent<Outline>().enabled = true;
                 trapsInRange.RemoveAt(nearestTrapIndex);
             }
         }
