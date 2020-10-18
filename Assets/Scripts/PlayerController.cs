@@ -9,15 +9,21 @@ public class PlayerController : MonoBehaviour
     float verMovement;
     public float speed = 13f;
     public float rotateSpeed = 30f;
+    SkinnedMeshRenderer rend;
+    public Material matInvisible;
+    public Material matNormal;
     public Transform itemDropLocation;
 
+    public bool isInvisible = false;
     // Start is called before the first frame update
     void Start() {
         rb = gameObject.GetComponent<Rigidbody>();
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        // rend.material.SetFloat("_Mode", 10f);
     }
 
     private void Update() {
-        
+        InvisiblePower();
     }
 
     // Update is called once per frame
@@ -30,5 +36,19 @@ public class PlayerController : MonoBehaviour
         verMovement = Input.GetAxis("Vertical");
         transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * rotateSpeed * horMovement * Time.deltaTime);
         transform.position += transform.forward * verMovement * speed * Time.deltaTime;
+    }
+
+    void InvisiblePower() {
+        if (Input.GetKeyDown(KeyCode.F)) {
+            GetComponentInChildren<BoxCollider>().isTrigger = true;
+            rend.material = matInvisible;
+            isInvisible = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.F)) {
+            GetComponentInChildren<BoxCollider>().isTrigger = false;
+            rend.material = matNormal;
+            isInvisible = false;
+        }
     }
 }

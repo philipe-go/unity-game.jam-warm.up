@@ -13,7 +13,6 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        gameObject.GetComponent<Outline>().enabled = isTrapActive ? false : true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +33,7 @@ public class PickUp : MonoBehaviour
                     }
                 }
             }
+            
         }
     }
-
 }
