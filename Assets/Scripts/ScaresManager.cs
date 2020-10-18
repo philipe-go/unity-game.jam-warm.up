@@ -22,6 +22,7 @@ public class ScaresManager : MonoBehaviour
         Transform trapPos = player.transform;
         GameObject item = Instantiate(inactiveItemTrap, trapPos.position, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = false;
+        item.GetComponent<Outline>().enabled = true;
         //Instantiate(inactiveItemTrap, player.transform.position, Quaternion.identity);
     }
 
@@ -31,6 +32,7 @@ public class ScaresManager : MonoBehaviour
         Transform trapPos = player.transform;
         GameObject item = Instantiate(activeItemTrap, trapPos.position, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = true;
+        item.GetComponent<Outline>().enabled = false;
         GameObject.Destroy(gameObject);
     }
     // Update is called once per frame

@@ -91,6 +91,7 @@ public class Inventory : MonoBehaviour
         Vector3 trapPos = itemPlacementLocation.position;
         GameObject item = Instantiate(trap, trapPos, Quaternion.identity);
         item.GetComponent<PickUp>().isTrapActive = true;
+        item.GetComponent<Outline>().enabled = false;
         //GameObject.Destroy(gameObject);
     }
     

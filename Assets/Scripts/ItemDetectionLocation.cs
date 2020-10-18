@@ -39,6 +39,7 @@ public class ItemDetectionLocation : MonoBehaviour
             {
                 GameObject nearestActivatedTrap = trapsInRange[nearestTrapIndex];
                 nearestActivatedTrap.GetComponent<PickUp>().isTrapActive = false;
+                nearestActivatedTrap.GetComponent<Outline>().enabled = true;
                 trapsInRange.RemoveAt(nearestTrapIndex);
             }
         }
