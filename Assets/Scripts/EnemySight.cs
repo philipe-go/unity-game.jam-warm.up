@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemySight : MonoBehaviour
 {
     public EnemyController enemyController;
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
         enemyController = transform.GetComponentInParent<EnemyController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -52,6 +54,39 @@ public class EnemySight : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
+            if (!player.isInvisible)
+            {
+                RaycastHit raycastHit;
+                Vector3 direction = other.transform.position - this.transform.position;          //direction vector from player to trap
+                if (Physics.Raycast(transform.position, direction, out raycastHit))             //checking if the raycast hit something or not
+                {
+                    Debug.Log("Raycast is hitting an object");
+
+                    
+                    if (raycastHit.transform.gameObject.CompareTag("Player"))         //checking if the object that raycast hitted is a trap or if there's another object covering the obstacle
+                    {
+                        float angle = Vector3.Angle(direction, transform.forward);
+
+                        if (angle < 70f)
+                        {
+                            print("close");
+                            Debug.DrawRay(transform.position, direction, Color.red);
+                            Debug.Log("It has hit the player");
+                            //enemyController.isScared = true;
+                            //--------------------apply damage to player
+                            Debug.Log("Busted!");
+                        }
+                            
+
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("did not hit the player");
+                        enemyController.isScared = false;
+                    }
+                }
+            }
             //Scare the kiddo if ghost is not invisible(i.e if F is not pressed)
         }
     }

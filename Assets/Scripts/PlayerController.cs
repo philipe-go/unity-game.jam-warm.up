@@ -40,13 +40,13 @@ public class PlayerController : MonoBehaviour
 
     void InvisiblePower() {
         if (Input.GetKeyDown(KeyCode.F)) {
-            GetComponentInChildren<BoxCollider>().isTrigger = true;
+            //GetComponentInChildren<BoxCollider>().isTrigger = true;
             rend.material = matInvisible;
             isInvisible = true;
         }
 
         if (Input.GetKeyUp(KeyCode.F)) {
-            GetComponentInChildren<BoxCollider>().isTrigger = false;
+            //GetComponentInChildren<BoxCollider>().isTrigger = false;
             rend.material = matNormal;
             isInvisible = false;
         }
