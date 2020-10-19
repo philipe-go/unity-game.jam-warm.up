@@ -5,6 +5,7 @@ using UnityEngine;
 public class NextWalkPoint : MonoBehaviour
 {
     public EnemyController enemyController;
+    public Transform commonWalkPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class NextWalkPoint : MonoBehaviour
         {
             Debug.Log("Not floor");
             enemyController.isWalkPointSet = false;
-            enemyController.walkPoint = new Vector3(0, 0, 0);
+            enemyController.walkPoint = commonWalkPoint.position;
             Debug.Log(enemyController.walkPoint);
         }
     }
