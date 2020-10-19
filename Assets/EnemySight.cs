@@ -36,6 +36,8 @@ public class EnemySight : MonoBehaviour
                     {
                         Debug.Log("It has hit a trap");
                         enemyController.isScared = true;
+                        trap.GetComponent<PickUp>().isAvailable = false;
+                        Destroy(other.gameObject, 2f); //to destroy the trap after 2 seconds
                     }
                     else
                     {

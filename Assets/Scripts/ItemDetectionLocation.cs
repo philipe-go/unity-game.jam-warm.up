@@ -23,7 +23,6 @@ public class ItemDetectionLocation : MonoBehaviour
     {
         if (trapsInRange.Count != 0)            //to deactivate the trap
         {
-            deactivateTrapUI.SetActive(true);
             float nearestTrapDistance = Vector3.Distance(player.transform.position, trapsInRange[0].transform.position);
             int nearestTrapIndex = 0;
             for (int i = 0; i < trapsInRange.Count; i++)
@@ -35,12 +34,17 @@ public class ItemDetectionLocation : MonoBehaviour
                     nearestTrapIndex = i;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Q))
+
+            if (trapsInRange[nearestTrapIndex].GetComponent<PickUp>().isAvailable)
             {
-                GameObject nearestActivatedTrap = trapsInRange[nearestTrapIndex];
-                nearestActivatedTrap.GetComponent<PickUp>().isTrapActive = false;
-                nearestActivatedTrap.GetComponent<Outline>().enabled = true;
-                trapsInRange.RemoveAt(nearestTrapIndex);
+                deactivateTrapUI.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    GameObject nearestActivatedTrap = trapsInRange[nearestTrapIndex];
+                    nearestActivatedTrap.GetComponent<PickUp>().isTrapActive = false;
+                    nearestActivatedTrap.GetComponent<Outline>().enabled = true;
+                    trapsInRange.RemoveAt(nearestTrapIndex);
+                }
             }
         }
         else

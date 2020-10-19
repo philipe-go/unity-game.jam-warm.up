@@ -8,12 +8,14 @@ public class PickUp : MonoBehaviour
     public Inventory inventory;
     public Sprite itemIcon;
     public bool isTrapActive = false;
+    public bool isAvailable = true;
     public int scareID;  //Every scare move will have an ID to keep a track of which scare is present in which slot.
     
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         gameObject.GetComponent<Outline>().enabled = isTrapActive ? false : true;
+        isAvailable = true;
     }
 
     private void OnTriggerEnter(Collider other)
