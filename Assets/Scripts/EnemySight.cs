@@ -37,9 +37,19 @@ public class EnemySight : MonoBehaviour
                     if (raycastHit.transform.gameObject.CompareTag("Trap"))         //checking if the object that raycast hitted is a trap or if there's another object covering the obstacle
                     {
                         Debug.Log("It has hit a trap");
-                        enemyController.isScared = true;
-                        trap.GetComponent<PickUp>().isAvailable = false;
-                        Destroy(other.gameObject, 2f); //to destroy the trap after 2 seconds
+                        float angle = Vector3.Angle(direction, transform.forward);
+                        if (angle < 70)
+                        {
+                            Debug.Log("Trap is in the field of view");
+                            enemyController.isScared = true;
+                            trap.GetComponent<PickUp>().isAvailable = false;
+                            Destroy(other.gameObject, 2f); //to destroy the trap after 2 seconds
+                        }
+                        else
+                        {
+                            Debug.Log("Trap is not in the field of view");
+                            enemyController.isScared = false;
+                        }
                     }
                     else
                     {
