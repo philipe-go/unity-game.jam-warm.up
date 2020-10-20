@@ -7,12 +7,11 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject player;
     public NavMeshAgent navMeshAgent;
+    public NavMeshPath navPath;
     public Animator animator;
     public bool isScared = false;
 
     public Transform sanityRestorePoint;
-
-    
 
     //--------------------Patrolling Part--------------------------
 
@@ -30,7 +29,9 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navPath = new NavMeshPath();
         animator = transform.GetComponentInChildren<Animator>();
+        navMeshAgent.SetDestination(cube.transform.position);
     }
 
     // Update is called once per frame
@@ -49,10 +50,10 @@ public class EnemyController : MonoBehaviour
             else
             {
                 NormalState();
-                Patrolling();
+                //Patrolling();
             }
         }
-        
+
     }
 
     void NormalState()
@@ -62,8 +63,6 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.speed = 7f;
         navMeshAgent.acceleration = 25f;
         Walk();
-        
-        
     }
     void ScaredState()
     {
@@ -76,7 +75,7 @@ public class EnemyController : MonoBehaviour
             //reached Sanity Restore Location.
             //Restore his sanity
             isScared = false;
-            isWalkPointSet = false;
+            navMeshAgent.SetDestination(cube.transform.position);
         }
     }
     void Idle()
@@ -103,38 +102,39 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("isWalking", false);
         animator.SetBool("isRunning", true);
     }
-    
-    
-    void Patrolling()
-    {
-        if (!isWalkPointSet)
-        {
-            SearchWalkPoint();
-        }
-        else
-        {
-            navMeshAgent.SetDestination(walkPoint);
-            cube.transform.position = walkPoint;
-        }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if(distanceToWalkPoint.magnitude < 5f)
-        {
-            isWalkPointSet = false;
-        }
-    }
-    
-    void SearchWalkPoint()
-    {
-        //Calculate a random point on the map
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+    // void Patrolling()
+    // {
+    //     if (!isWalkPointSet)
+    //     {
+    //         SearchWalkPoint();
+    //     }
+    //     else
+    //     {
+    //         navMeshAgent.SetDestination(walkPoint);
+    //         cube.transform.position = walkPoint;
+    //     }
+    //     Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (Physics.Raycast(walkPoint,-transform.up, groundLayer))
-        {
-            isWalkPointSet = true;
-        }
-    }
+    //     if (distanceToWalkPoint.magnitude < 5f)
+    //     {
+    //         isWalkPointSet = false;
+    //     }
+    //     navMeshAgent.SetDestination(cube.transform.position);
+    // }
+
+    // void SearchWalkPoint()
+    // {
+    //     //Calculate a random point on the map
+    //     float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    //     float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+    //     walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+    //     if (Physics.Raycast(walkPoint, -transform.up, groundLayer))
+    //     {
+    //         isWalkPointSet = true;
+    //     }
+    // }
 }

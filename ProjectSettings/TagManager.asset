@@ -7,6 +7,7 @@ TagManager:
   - Inventory
   - Trap
   - Floor
+  - Kid
   layers:
   - Default
   - TransparentFX
