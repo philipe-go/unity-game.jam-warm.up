@@ -24,6 +24,10 @@ public class EnemyController : MonoBehaviour
     //for debugging purpose
     public GameObject cube;
 
+    // ~~
+    public GameObject fearOrb;
+    private bool orbSpawned = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,7 @@ public class EnemyController : MonoBehaviour
         if (isScared)
         {
             ScaredState();
+            if(!orbSpawned) DropOrb();
         }
         else
         {
@@ -103,6 +108,10 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("isRunning", true);
     }
 
+    void DropOrb() {
+        Instantiate(fearOrb, transform.position, Quaternion.identity);
+        orbSpawned = true;
+    }
 
     // void Patrolling()
     // {

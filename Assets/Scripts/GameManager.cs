@@ -11,7 +11,9 @@ sealed class GameManager : MonoBehaviour
     [SerializeField] Text _canvasTimer;
     [Space]
     [SerializeField] GameObject _gameOver;
-
+    public Slider fearMeter;
+    public const float MAX_FEAR_ORBS = 30f;
+    private float fearCollected = 0f;
 
     #region Singleton
     public static GameManager instance = null;
@@ -24,6 +26,7 @@ sealed class GameManager : MonoBehaviour
         _gameOver.SetActive(false);
         FindObjectOfType<CameraController>().enabled = true;
         Time.timeScale = 1;
+        SetMeter();
     }
 
     void Update()
@@ -33,6 +36,22 @@ sealed class GameManager : MonoBehaviour
                                 "Time is over";
         if (_timer <= 0) GameOver();
     }
+
+    // ~~ Temporary fucntions
+    private void SetMeter() {
+        fearMeter.maxValue = MAX_FEAR_ORBS;
+        fearMeter.value = fearCollected;
+    }
+
+    private void UpdateMeter(float fearValue) {
+        fearMeter.value = fearValue;
+    }
+
+    public void OrbCollected(float fearOrbValue) {
+        fearCollected += fearOrbValue;
+        UpdateMeter(fearCollected);
+    }
+    // ~~end
 
     void GameOver()
     {
