@@ -9,23 +9,25 @@ public class NextWalkPoint : MonoBehaviour
     NavMeshAgent navAgent;
     NavMeshPath navPath;
     Vector3 newPos;
-    bool validWaypoint;
-    bool coroutineON;
+    //bool validWaypoint;
+    //bool coroutineON;
 
     // Start is called before the first frame update
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
-        navPath = new NavMeshPath();
-        coroutineON = false;
+        //navPath = new NavMeshPath();
+        //coroutineON = false;
         // enemyController = GetComponentInParent<EnemyController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.tag=="Kid")
@@ -36,13 +38,14 @@ public class NextWalkPoint : MonoBehaviour
             // Debug.Log(enemyController.walkPoint);
         }
     }
-
+    
     void WayPointSetter()
     {
         //Calculate a random point on the map
         float randomZ = Random.Range(-enemyController.walkPointRange, enemyController.walkPointRange);
         float randomX = Random.Range(-enemyController.walkPointRange, enemyController.walkPointRange);
         newPos = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        
     }
 
     IEnumerator SetNewPathCoroutine(float timer)
@@ -61,4 +64,5 @@ public class NextWalkPoint : MonoBehaviour
         yield return new WaitForSeconds(timer);
         coroutineON = false;
     }
+    */
 }
