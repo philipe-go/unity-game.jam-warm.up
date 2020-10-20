@@ -15,14 +15,17 @@ public class EnemyController : MonoBehaviour
 
     //--------------------Patrolling Part--------------------------
 
-    public LayerMask groundLayer;
-    public Vector3 walkPoint;
-    public bool isWalkPointSet;
-    public float walkPointRange;
+    //public LayerMask groundLayer;
+    public Vector3 nextWalkPoint;
+    public bool isNextWalkPointSet;
+    //public float walkPointRange;
     public bool isIdle = false;
+    public Transform[] walkPoints;
+    public GameObject walkpointCollection;
+    public int nextWalkPointIndex=0;
 
     //for debugging purpose
-    public GameObject cube;
+    //public GameObject cube;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,8 @@ public class EnemyController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navPath = new NavMeshPath();
         animator = transform.GetComponentInChildren<Animator>();
-        navMeshAgent.SetDestination(cube.transform.position);
+        //navMeshAgent.SetDestination(cube.transform.position);
+        SetWalkPoints();
     }
 
     // Update is called once per frame
@@ -50,18 +54,23 @@ public class EnemyController : MonoBehaviour
             else
             {
                 NormalState();
-                //Patrolling();
+                Patrolling();
             }
         }
 
     }
 
+    void SetWalkPoints()
+    {
+        walkPoints = new Transform[walkpointCollection.transform.childCount];
+        for (int i = 0; i < walkPoints.Length; i++)
+        {
+            walkPoints[i] = walkpointCollection.transform.GetChild(i);
+        }
+    }
     void NormalState()
     {
         //Idle condition (Suppose if the kid is doing some task)
-
-        navMeshAgent.speed = 7f;
-        navMeshAgent.acceleration = 25f;
         Walk();
     }
     void ScaredState()
@@ -75,7 +84,7 @@ public class EnemyController : MonoBehaviour
             //reached Sanity Restore Location.
             //Restore his sanity
             isScared = false;
-            navMeshAgent.SetDestination(cube.transform.position);
+            //navMeshAgent.SetDestination(cube.transform.position);
         }
     }
     void Idle()
@@ -104,37 +113,31 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    // void Patrolling()
-    // {
-    //     if (!isWalkPointSet)
-    //     {
-    //         SearchWalkPoint();
-    //     }
-    //     else
-    //     {
-    //         navMeshAgent.SetDestination(walkPoint);
-    //         cube.transform.position = walkPoint;
-    //     }
-    //     Vector3 distanceToWalkPoint = transform.position - walkPoint;
+     void Patrolling()
+     {
+         if (!isNextWalkPointSet)
+         {
+             SearchWalkPoint();
+         }
+         else
+         {
+             navMeshAgent.SetDestination(nextWalkPoint);
+             //cube.transform.position = nextWalkPoint;
+         }
+         Vector3 distanceToWalkPoint = transform.position - nextWalkPoint;
 
-    //     if (distanceToWalkPoint.magnitude < 5f)
-    //     {
-    //         isWalkPointSet = false;
-    //     }
-    //     navMeshAgent.SetDestination(cube.transform.position);
-    // }
+         if (distanceToWalkPoint.magnitude < 5f)
+         {
+             isNextWalkPointSet = false;
+         }
+         
+     }
 
-    // void SearchWalkPoint()
-    // {
-    //     //Calculate a random point on the map
-    //     float randomZ = Random.Range(-walkPointRange, walkPointRange);
-    //     float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-    //     walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-    //     if (Physics.Raycast(walkPoint, -transform.up, groundLayer))
-    //     {
-    //         isWalkPointSet = true;
-    //     }
-    // }
+     void SearchWalkPoint()
+     {
+        nextWalkPointIndex = Random.Range(0, walkPoints.Length);
+        nextWalkPoint = walkPoints[nextWalkPointIndex].position;
+        navMeshAgent.SetDestination(nextWalkPoint);
+        isNextWalkPointSet = true;
+     }
 }
