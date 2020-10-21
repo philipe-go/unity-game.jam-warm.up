@@ -23,6 +23,7 @@ public class ItemDetectionLocation : MonoBehaviour
     {
         if (trapsInRange.Count != 0)            //to deactivate the trap
         {
+            CheckIfTrapGameObjectIsDestroyed();
             float nearestTrapDistance = Vector3.Distance(player.transform.position, trapsInRange[0].transform.position);
             int nearestTrapIndex = 0;
             for (int i = 0; i < trapsInRange.Count; i++)
@@ -50,6 +51,20 @@ public class ItemDetectionLocation : MonoBehaviour
         else
         {
             deactivateTrapUI.SetActive(false);
+        }
+    }
+    public void CheckIfTrapGameObjectIsDestroyed()
+    {
+        if (trapsInRange.Count != 0)            //to avoid Argument out of index errors
+        {
+            for (int i = 0; i < trapsInRange.Count; i++)
+            {
+                if (trapsInRange[i] == null)
+                {
+                    trapsInRange.Clear();
+                    Debug.Log("Cleared");
+                }
+            }
         }
     }
     private void OnTriggerStay(Collider other)
