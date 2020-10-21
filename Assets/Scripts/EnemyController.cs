@@ -24,6 +24,10 @@ public class EnemyController : MonoBehaviour
     public GameObject walkpointCollection;
     public int nextWalkPointIndex=0;
 
+    // ~~
+    public GameObject fearOrb;
+    private bool orbSpawned = false;
+
     //for debugging purpose
     //public GameObject cube;
 
@@ -43,6 +47,7 @@ public class EnemyController : MonoBehaviour
     {
         if (isScared)
         {
+            if(!orbSpawned) DropOrb();
             ScaredState();
         }
         else
@@ -140,4 +145,10 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.SetDestination(nextWalkPoint);
         isNextWalkPointSet = true;
      }
+
+    // ~~
+     void DropOrb() {
+        Instantiate(fearOrb, transform.position, Quaternion.identity);
+        orbSpawned = true;
+    }
 }
