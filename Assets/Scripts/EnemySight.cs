@@ -7,6 +7,8 @@ public class EnemySight : MonoBehaviour
     public EnemyController enemyController;
     public PlayerController player;
     public ItemDetectionLocation itemDetectionLocation;
+
+    public GameObject scaredFloatingTraps;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,10 @@ public class EnemySight : MonoBehaviour
     {
         
     }
-
+    void ActivateScaredFloatingTraps(int trapID)
+    {
+        scaredFloatingTraps.transform.GetChild(trapID - 1).gameObject.SetActive(true);
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Trap"))       //checking it it's a trap or not
@@ -31,7 +36,7 @@ public class EnemySight : MonoBehaviour
                 //Debug.Log("Yes trap is active");
                 //raycast to the trap to see if kid can actually see it or not.
                 RaycastHit raycastHit;
-                Vector3 direction = trap.transform.position - this.transform.position;          //direction vector from player to trap
+                Vector3 direction = trap.transform.position - transform.position;          //direction vector from player to trap
                 if (Physics.Raycast(transform.position, direction, out raycastHit))             //checking if the raycast hit something or not
                 {
                     //Debug.Log("Raycast is hitting an object");
@@ -45,7 +50,9 @@ public class EnemySight : MonoBehaviour
                             //Debug.Log("Trap is in the field of view");
                             enemyController.isScared = true;
                             trap.GetComponent<PickUp>().isAvailable = false;
+                            int trapID = other.gameObject.GetComponent<PickUp>().scareID;
                             Destroy(other.gameObject, 2f); //to destroy the trap after 2 seconds
+                            ActivateScaredFloatingTraps(trapID);
                             itemDetectionLocation.CheckIfTrapGameObjectIsDestroyed();
                         }
                         else

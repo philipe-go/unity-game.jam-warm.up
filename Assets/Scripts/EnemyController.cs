@@ -10,8 +10,10 @@ public class EnemyController : MonoBehaviour
     public NavMeshPath navPath;
     public Animator animator;
     public bool isScared = false;
+    
 
     public Transform sanityRestorePoint;
+    public GameObject scaredFloatingTraps;
 
     //--------------------Patrolling Part--------------------------
 
@@ -47,14 +49,14 @@ public class EnemyController : MonoBehaviour
     {
         if (isScared)
         {
-            if(!orbSpawned) DropOrb();
+            //if(!orbSpawned) DropOrb();
             ScaredState();
         }
         else
         {
             if (isIdle)
             {
-
+                //code to be added a bit later
             }
             else
             {
@@ -65,6 +67,13 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void DeactivateScaredFloatingTraps()
+    {
+        for (int i = 0; i < scaredFloatingTraps.transform.childCount; i++)
+        {
+            scaredFloatingTraps.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
     void SetWalkPoints()
     {
         walkPoints = new Transform[walkpointCollection.transform.childCount];
@@ -89,6 +98,7 @@ public class EnemyController : MonoBehaviour
             //reached Sanity Restore Location.
             //Restore his sanity
             isScared = false;
+            DeactivateScaredFloatingTraps();
             //navMeshAgent.SetDestination(cube.transform.position);
         }
     }

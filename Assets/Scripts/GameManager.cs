@@ -26,7 +26,7 @@ sealed class GameManager : MonoBehaviour
         _gameOver.SetActive(false);
         FindObjectOfType<CameraController>().enabled = true;
         Time.timeScale = 1;
-        SetMeter();
+        //SetMeter();
     }
 
     void Update() {
