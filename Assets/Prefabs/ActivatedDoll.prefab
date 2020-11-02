@@ -24,6 +24,7 @@ GameObject:
 --- !u!4 &278640881106039023
 Transform:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618751041089464917}
