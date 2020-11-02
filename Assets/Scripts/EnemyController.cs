@@ -93,7 +93,7 @@ public class EnemyController : MonoBehaviour
         Run();
         navMeshAgent.SetDestination(sanityRestorePoint.position);
         Vector3 distanceToSanityRestorePoint = transform.position - sanityRestorePoint.position;
-        if (distanceToSanityRestorePoint.magnitude < 5f)
+        if (distanceToSanityRestorePoint.magnitude < 2f)
         {
             //reached Sanity Restore Location.
             //Restore his sanity

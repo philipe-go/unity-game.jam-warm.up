@@ -55,17 +55,19 @@ public class EnemySight : MonoBehaviour
                             ActivateScaredFloatingTraps(trapID);
                             itemDetectionLocation.CheckIfTrapGameObjectIsDestroyed();
                         }
+                        /*
                         else
                         {
                             //Debug.Log("Trap is not in the field of view");
                             enemyController.isScared = false;
-                        }
+                        }*/
                     }
+                    /*
                     else
                     {
                         //Debug.Log("did not hit trap");
                         enemyController.isScared = false;
-                    }
+                    }*/
                 }
                 
 
@@ -91,7 +93,7 @@ public class EnemySight : MonoBehaviour
                         {
                             Debug.DrawRay(transform.position, direction, Color.red);
                             //Debug.Log("It has hit the player");
-                            //enemyController.isScared = true;
+                            enemyController.isScared = true;
                             //--------------------apply damage to player
                             //Debug.Log("Busted!");
                         }
@@ -99,11 +101,11 @@ public class EnemySight : MonoBehaviour
 
                         
                     }
-                    else
+                    /*else
                     {
                         Debug.Log("did not hit the player");
                         enemyController.isScared = false;
-                    }
+                    }*/
                 }
             }
             //Scare the kiddo if ghost is not invisible(i.e if F is not pressed)
