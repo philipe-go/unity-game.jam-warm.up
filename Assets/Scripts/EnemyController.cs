@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
     {
         if (isScared)
         {
-            //if(!orbSpawned) DropOrb();
+            if(!orbSpawned) DropOrb();
             ScaredState();
         }
         else
@@ -86,6 +86,7 @@ public class EnemyController : MonoBehaviour
     {
         //Idle condition (Suppose if the kid is doing some task)
         Walk();
+        orbSpawned = false;
     }
     void ScaredState()
     {

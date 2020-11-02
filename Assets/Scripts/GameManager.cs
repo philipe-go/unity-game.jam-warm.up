@@ -13,7 +13,7 @@ sealed class GameManager : MonoBehaviour
     [SerializeField] GameObject _gameOver;
 
     public Slider fearMeter;
-    private float fearCollected = 0f;
+    public float fearCollected = 0f;
     public const float MAX_FEAR_ORBS = 30f;
 
     #region Singleton
@@ -26,7 +26,7 @@ sealed class GameManager : MonoBehaviour
         _gameOver.SetActive(false);
         FindObjectOfType<CameraController>().enabled = true;
         Time.timeScale = 1;
-        //SetMeter();
+        SetMeter();
     }
 
     void Update() {
@@ -50,8 +50,8 @@ sealed class GameManager : MonoBehaviour
         fearCollected += fearOrbValue;
         UpdateMeter(fearCollected);
     }
-    // ~~end
 
+    // ~~end
     void GameOver() {
         _gameOver.SetActive(true);
         Time.timeScale = 0;
