@@ -11,6 +11,7 @@ sealed class GameManager : MonoBehaviour
     [SerializeField] Text _canvasTimer;
     [Space]
     [SerializeField] GameObject _gameOver;
+    [SerializeField] GameObject _PlayerWinUI;
 
     public Slider fearMeter;
     public float fearCollected = 0f;
@@ -24,6 +25,7 @@ sealed class GameManager : MonoBehaviour
 
     void Start() {
         _gameOver.SetActive(false);
+        _PlayerWinUI.SetActive(false);
         FindObjectOfType<CameraController>().enabled = true;
         Time.timeScale = 1;
         SetMeter();
@@ -49,8 +51,22 @@ sealed class GameManager : MonoBehaviour
     public void OrbCollected(float fearOrbValue) {
         fearCollected += fearOrbValue;
         UpdateMeter(fearCollected);
+        CheckIfPlayerWon();
     }
 
+    void CheckIfPlayerWon()
+    {
+        if (fearCollected>=MAX_FEAR_ORBS)
+        {
+            //Player Won
+            Debug.Log("Player Won");
+            _PlayerWinUI.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            FindObjectOfType<CameraController>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
     // ~~end
     void GameOver() {
         _gameOver.SetActive(true);
