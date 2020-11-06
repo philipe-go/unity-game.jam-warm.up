@@ -92,23 +92,13 @@ public class EnemySight : MonoBehaviour
                         if (angle < 70f)
                         {
                             Debug.DrawRay(transform.position, direction, Color.red);
+                            //Apply some damage to ghost
                             //Debug.Log("It has hit the player");
                             enemyController.isScared = true;
-                            //--------------------apply damage to player
-                            //Debug.Log("Busted!");
                         }
-                            
-
-                        
                     }
-                    /*else
-                    {
-                        Debug.Log("did not hit the player");
-                        enemyController.isScared = false;
-                    }*/
                 }
             }
-            //Scare the kiddo if ghost is not invisible(i.e if F is not pressed)
         }
     }
 }

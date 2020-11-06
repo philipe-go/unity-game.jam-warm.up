@@ -32,7 +32,7 @@ public class FearOrbCollected : MonoBehaviour
             yield return new WaitForSeconds(time);
             _rendMat.SetColor("_BaseColor", Color.black);
             yield return new WaitForSeconds(time);
-            _rendMat.SetColor("_BaseColor", Color.yellow);
+            _rendMat.SetColor("_BaseColor", Color.cyan);
         }
     }
 }
