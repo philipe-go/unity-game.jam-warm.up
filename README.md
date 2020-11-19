@@ -11,7 +11,7 @@ You play as a tiny ghost, and you help him collect fear from kids around the far
 
 Do it before the time is up, and you shall succeed! :)
 
-# :play the game: 
+# :video_game: Play the game! 
 - [link 1](https://philipego.itch.io/spookaboo)
 - [link 2](https://starshums.itch.io/spook-a-boo)
 
