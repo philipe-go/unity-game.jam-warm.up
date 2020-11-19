@@ -74,31 +74,32 @@ public class EnemySight : MonoBehaviour
                 
             }
         }
-        if (other.CompareTag("Player"))
-        {
-            if (!player.isInvisible)
-            {
-                RaycastHit raycastHit;
-                Vector3 direction = other.transform.position - this.transform.position;          //direction vector from player to trap
-                if (Physics.Raycast(transform.position, direction, out raycastHit))             //checking if the raycast hit something or not
-                {
-                    //Debug.Log("Raycast is hitting an object");
+        //====> REMOVED TO AVOID KIDS GETTING SCARED WITH THE GHOST
+        // if (other.CompareTag("Player"))
+        // {
+        //     if (!player.isInvisible)
+        //     {
+        //         RaycastHit raycastHit;
+        //         Vector3 direction = other.transform.position - this.transform.position;          //direction vector from player to trap
+        //         if (Physics.Raycast(transform.position, direction, out raycastHit))             //checking if the raycast hit something or not
+        //         {
+        //             //Debug.Log("Raycast is hitting an object");
 
                     
-                    if (raycastHit.transform.gameObject.CompareTag("Player"))         //checking if the object that raycast hitted is a trap or if there's another object covering the obstacle
-                    {
-                        float angle = Vector3.Angle(direction, transform.forward);
+        //             if (raycastHit.transform.gameObject.CompareTag("Player"))         //checking if the object that raycast hitted is a trap or if there's another object covering the obstacle
+        //             {
+        //                 float angle = Vector3.Angle(direction, transform.forward);
 
-                        if (angle < 70f)
-                        {
-                            Debug.DrawRay(transform.position, direction, Color.red);
-                            //Apply some damage to ghost
-                            //Debug.Log("It has hit the player");
-                            enemyController.isScared = true;
-                        }
-                    }
-                }
-            }
-        }
+        //                 if (angle < 70f)
+        //                 {
+        //                     Debug.DrawRay(transform.position, direction, Color.red);
+        //                     //Apply some damage to ghost
+        //                     //Debug.Log("It has hit the player");
+        //                     enemyController.isScared = true;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
