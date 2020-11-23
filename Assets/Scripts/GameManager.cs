@@ -84,9 +84,10 @@ sealed class GameManager : MonoBehaviour
     }
 
     public void Quit() {
-        #if UNITY_EDITOR
+        /*#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif 
+        */
         Application.Quit();
     }
 }
