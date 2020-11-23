@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject _startMenu;
     [SerializeField] Transform cameraPlaceHolder;
     [Range(2f, 20)] public float RotSpeed = 4f;
 
+    
     void Start()
     {
         _startMenu.SetActive(true);
@@ -32,4 +33,6 @@ public class MainMenu : MonoBehaviour
 #endif
         Application.Quit();
     }
+
+    
 }
