@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 39b32cb997de33640879919ced3e21d8, type: 3}
+  itemIcon: {fileID: 21300000, guid: 607fe80db4b151444ab799b1ca798346, type: 3}
   isTrapActive: 0
   isAvailable: 1
   scareID: 3
