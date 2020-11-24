@@ -14,6 +14,7 @@ Do it before the time is up, and you shall succeed! :)
 # :video_game: Play the game! 
 - [link 1](https://philipego.itch.io/spookaboo)
 - [link 2](https://starshums.itch.io/spook-a-boo)
+- [link 3](https://eternalodyssey10.itch.io/spook-a-boo)
 
 # :man_technologist: The Team
 [Philipe Go.](https://github.com/philipe-go)
