@@ -15,7 +15,7 @@ sealed class GameManager : MonoBehaviour
 
     public Slider fearMeter;
     public float fearCollected = 0f;
-    public const float MAX_FEAR_ORBS = 30f;
+    public const float MAX_FEAR_ORBS = 70f;
 
     #region Singleton
     public static GameManager instance = null;
@@ -84,10 +84,10 @@ sealed class GameManager : MonoBehaviour
     }
 
     public void Quit() {
-        /*#if UNITY_EDITOR
+        #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif 
-        */
+        
         Application.Quit();
     }
 }
